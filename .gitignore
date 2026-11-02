@@ -1,0 +1,10 @@
+# 打包过程的临时暂存目录（每次 pack_market 重建，且是旧版本副本）
+dist/market/_work/
+
+# WorkBuddy 内部工作数据（非 skill 内容）
+.workbuddy/
+
+# 系统垃圾文件
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,99 @@
+{
+  "skill": "hanyu-teacher-lesson-prep",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我明天要给中级班讲「把」字句，45 分钟，帮我备课，要有导入和讲解，学生是英语母语的。",
+      "expected_behavior": "加载 grammar-point-lesson-design 卡，先查 kb/index/grammar-points.md 与 grammar-levels.md 定级，产出五段式教案（知识扫描/格式/常见偏误/教学提示/教学建议）",
+      "expected_card": "grammar-point-lesson-design",
+      "notes": "正面场景：最典型的备课请求"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "学生问我「以前」和「以后」到底有什么区别，还有「以来」怎么用，我一下就卡住了。",
+      "expected_behavior": "加载 confusable-discrimination 卡，查 kb/index/discrimination.md 定位第 1 例，给例句对比 + 可判定区分标准 + 检验题",
+      "expected_card": "confusable-discrimination",
+      "notes": "正面场景：教师被辨析问住"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这个「越来越」是几级语法点？我给零起点的班上课能用吗？我准备的例句里「逐渐」是不是超纲了？",
+      "expected_behavior": "加载 level-scoping 卡，查 grammar-levels.md 与 vocab-levels.tsv，给级别判定 + 超纲清单 + 处理方式",
+      "expected_card": "level-scoping",
+      "notes": "正面场景：定级与超纲控制"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我在准备国际中文教师证书面试，下周要说课，还得试讲十分钟，帮我准备一下稿子和可能的追问。",
+      "expected_behavior": "加载 demo-lesson-shuoke 卡，按说课四要点 + 试讲脚本 + 追问应对设计",
+      "expected_card": "demo-lesson-shuoke",
+      "notes": "正面场景：说课试讲"
+    },
+    {
+      "id": "should-trigger-05",
+      "type": "should_trigger",
+      "prompt": "我班上有个日本学生，上课从来不说话，点他名就低头，作业倒是都交。这怎么办？",
+      "expected_behavior": "加载 classroom-diagnosis 卡（第 7 问：学生沉默的多重原因），先分层归因再给处置方案；如涉及文化观念可补读 intercultural-framing",
+      "expected_card": "classroom-diagnosis",
+      "notes": "正面场景：课堂现场困境，且带文化诱因"
+    },
+    {
+      "id": "should-trigger-06",
+      "type": "should_trigger",
+      "prompt": "「北京大学的留学生」这句话的拼音怎么连写？「西安」要不要加隔音符号？",
+      "expected_behavior": "加载 pinyin-orthography 卡，查 kb/index/pinyin-rules.md 定位 GB/T 16159 条款（6.1 分词连写 / 6.2.2.1 地名专名通名分写），给出可引条款号的书写判定",
+      "expected_card": "pinyin-orthography",
+      "notes": "正面场景：拼音正词法（v1 盲测暴露路由缺口，已补第 9 张卡）"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "帮我把这段中文简历翻译成英文，语气正式一点。",
+      "expected_behavior": "纯翻译任务，不应调用备课 skill",
+      "notes": "诱饵：翻译"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "汉语的「把」字句在生成语法框架里应该怎么分析？它的轻动词结构是什么？",
+      "expected_behavior": "纯理论语言学问题，本库不含句法理论，不应走备课流程",
+      "notes": "诱饵：理论语言学（同话题但不同意图，最危险的诱饵）"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我是学中文的外国学生，想问一下「了」和「过」有什么不一样？",
+      "expected_behavior": "学习者自学答疑，不涉及教学设计；可直接回答或简单说明，不必产出教案",
+      "notes": "诱饵：同一问题域但使用者身份是学生，非教师备课"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "ü 在 j q x 后面为什么写成 u？这个怎么跟学生解释？",
+      "expected_behavior": "加载 pinyin-orthography 卡，但必须落到 B 段边界：说明 j/q/x 后 ü 省写属《汉语拼音方案》与语音本体，GB/T 16159 只规定正词法（连写/大写/标调），因此该条为模型知识并标注「非本库来源」，再给教学法建议",
+      "expected_card": "pinyin-orthography",
+      "notes": "边界：书写规范与拼写方案的分界，考察是否诚实标注来源（v1 盲测把省写规则误归为正词法，已加边界条款）"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我在教一个零起点的成人班，一学期 16 周，帮我排个教学大纲。",
+      "expected_behavior": "仍应加载 level-scoping：用 standards/quantitative.md 与 level-descriptors.md 给出单元级骨架与周次分配，同时说明「整学期大纲需校本方案，本库只支持到单元级」。不得直接拒答（v1 盲测因判停措辞过硬而拒载，已改写）",
+      "expected_card": "level-scoping",
+      "notes": "边界：请求粒度超出能力上限，考察是拒答还是给降级方案"
+    },
+    {
+      "id": "edge-03",
+      "type": "edge_case",
+      "prompt": "学生说我上课总盯着前排几个学生，后排都不管，我该怎么改？",
+      "expected_behavior": "加载 classroom-diagnosis（教学反思自诊），给可执行的自我观察方法；不要滑向跨文化归因",
+      "expected_card": "classroom-diagnosis",
+      "notes": "边界：教师自我诊断，非学生问题，且易被误判为文化议题"
+    }
+  ]
+}

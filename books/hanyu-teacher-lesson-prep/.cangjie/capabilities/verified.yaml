@@ -1,0 +1,256 @@
+bundle_id: cangjie-hanyu-teacher-lesson-prep
+schema_version: "1.0"
+generated_at: "2026-02-10"
+
+book:
+  title: 汉语教师备课知识库
+  author: 国际汉语教师语法教学手册 等 11 份工具书与国家标准（合集）
+  slug: hanyu-teacher-lesson-prep
+
+entry:
+  name: hanyu-teacher-lesson-prep
+  description: |
+    汉语教师（含国际中文教师证书考生）备课时使用：要讲一个语法点、要判断某点属几级/
+    是否超纲、学生问"这两个词有什么区别"、要预测学生会在哪出错并决定纠不纠、
+    要设计操练与课堂活动、要写说课稿或试讲脚本、课堂出了状况（不开口/水平参差/纪律/文化冲突）、
+    要判定拼音连写与大写、要给跨文化现象找框架时调用。
+    触发词：备课、教案、语法点、怎么讲、试讲、说课、偏误、纠错、辨析、区别、
+    超纲、几级、操练、课堂活动、不开口、拼音正词法、文化休克。
+    不适用：纯中英翻译、纯语言学理论/句法研究、英语或其他语种教学、学生自学答疑中
+    不涉及教学设计的纯知识提问。
+  core_principles:
+    - "先定级，再设计：任何教案、例句、练习动笔前，先查等级标准确认该点与用词的级别；超纲不是禁止，是必须显性处理（注释/替换/标为拓展）。"
+    - "知识必须降到课堂：讲一个点要给出「一句话能讲给外国人听的定义 + 可视化格式 + 学生会犯的错 + 讲解雷区 + 带师生对话的脚本」，停在语法解释等于没备课。"
+    - "偏误先于讲解：先问学生母语与已学内容，用「格式」的槽位反推会在哪出错，再决定讲什么、纠不纠。"
+    - "辨析三件套缺一不可：语言事实（例句）→ 可判定的区分标准 → 检验题。只给「语感不同」等于没回答。"
+    - "操练按梯度走：机械→半交际→交际，顺序不能跳；活动必须服务于语言点，不能只玩不学。"
+    - "来源要分清：本库覆盖语法、辨析、等级、拼音书写、课堂技巧、跨文化框架；语音本体（声韵调/变调/儿化）与汉字本体（笔画/部件/造字法）本库没有，只能靠模型知识回答并明确标注。"
+  out_of_scope:
+    - "纯中英/中日翻译、写作润色，与教学设计无关。"
+    - "纯语言学理论问题（句法树、生成语法、语言习得理论流派），本库不含。"
+    - "英语、日语等其他语种的教学法。"
+    - "非教学场景的汉语知识问答（如学生自学时问「什么意思」），可直接回答，不必走备课流程。"
+  stop_conditions:
+    - "用户问的是语音本体（声母韵母系统、连读变调、儿化音变）或汉字本体（笔画名称、部件、造字法）：直接说明本库不含此内容，用模型知识回答并标注「非本库来源」，不要伪装成有据可查。"
+    - "用户未说明教学对象级别、课时长度、学生母语：先问，不要凭空假设。级别未知时不得给出「这个点适合几级」的结论。"
+    - "用户要的是完整教材或一学期以上的整学期排课：仍用等级标准的量化指标给出单元级骨架与周次分配建议，但必须说明「整学期大纲需校本方案，本库只支持到单元级」，不要直接拒答。"
+    - "问到读音/发音/纠音（声调调值、连读变调、儿化、轻声）：本库只有书写规范、没有语音本体，直接说明并用模型知识回答、标注「非本库来源」。"
+    - "两个来源冲突时（如词表标变调、GB/T 16159 6.5.2 要求标原调）：说明冲突、给出各自适用场景，不要静默选一个。"
+    - "涉及具体机构的考试政策、报名流程、薪资待遇：超出范围，直接说明。"
+    - "知识库检索连续两次未命中：停止翻找，说明本库未覆盖，改用模型知识并标注。"
+
+capabilities:
+  - capability_id: cap.hanyu-teacher-lesson-prep.grammar-point-lesson-design
+    revision: 2
+    status: active
+    slug: grammar-point-lesson-design
+    title: 语法点五段式备课
+    importance: critical
+    importance_rationale: "语料主力（语法手册 1/2，63 个完整五段式单元，占知识库 812 KB），也是最高频的备课请求；其余 7 张卡都是它的某一段的深挖或前置条件。"
+    one_liner: "按「知识扫描→格式→常见偏误→教学提示→教学建议」五段降维，把语法知识变成可上课的脚本。"
+    intents:
+      - "要讲某个语法点，帮我备课/写教案"
+      - "这个点怎么导入、怎么讲学生才懂"
+      - "帮我设计一节 45 分钟的课"
+    keywords: [备课, 教案, 语法点, 怎么讲, 导入, 讲解, 教学设计, 教学步骤, 45分钟, lesson plan]
+    also_read: [level-scoping, error-forecast, practice-ladder]
+    card: cards/grammar-point-lesson-design.md
+    frontmatter:
+      description: |
+        用户要为某个具体语法点（了/把/比/趋向补语/越来越等）准备一节课时调用。
+        输出五段式：知识扫描、格式、常见偏误、教学提示、教学建议。
+    source_evidence:
+      - source_id: src-manual-1
+        location: 凡例（第 46–52 行）+ 63 个语法点单元
+      - source_id: src-manual-2
+        location: 续编语法点单元
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.level-scoping
+    revision: 2
+    status: active
+    slug: level-scoping
+    title: 等级对标与超纲控制
+    importance: critical
+    importance_rationale: "等级标准提供 571 个分级语法点、11065 分级词、2882 分级字（约 440 KB 索引），是所有教案「不超纲」的唯一依据；缺此卡其余建议会凭感觉定难度。"
+    one_liner: "先查等级再设计：用 GF 0025—2021 定语法点级别、查例句用词用字是否超纲，超纲必须显性处理。"
+    intents:
+      - "这个语法点是几级 / 我的班能讲吗"
+      - "这段材料有没有超纲词"
+      - "按等级标准写教学目标 / 定难度上限"
+    keywords: [几级, 等级, 超纲, HSK, 初级, 中级, 高级, 教学目标, 量化指标, 词汇分级, 汉字分级, level]
+    also_read: [grammar-point-lesson-design]
+    card: cards/level-scoping.md
+    frontmatter:
+      description: |
+        用户在问某语法点属几级、某材料是否超纲、或要按等级标准写教学目标时调用。
+        输出：级别判定 + 超纲项清单 + 处理方式（替换/注释/标为拓展）。
+    source_evidence:
+      - source_id: src-std
+        location: GF 0025—2021 第 2.3/2.7/3.1.1 节 + 音节表/汉字表/词汇表/语法等级大纲
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.error-forecast
+    revision: 2
+    status: active
+    slug: error-forecast
+    title: 偏误预测与纠错决策
+    importance: critical
+    importance_rationale: "「常见偏误」是五段式中信息密度最高的一段（每单元含真实错句），且纠错时机是课堂最高频的即时决策；书中有专门判据（第 24 问）。"
+    one_liner: "先按格式槽位反推偏误、再按「是否重难点/是否中断交际」决定当场纠、延时纠还是不纠。"
+    intents:
+      - "这个点学生容易犯什么错 / 帮我预判偏误"
+      - "学生说错了要不要马上纠正"
+      - "学生说成 X，错在哪、怎么纠"
+    keywords: [偏误, 错误, 纠错, 纠正, 预判, 母语迁移, 中介语, 打断, error, correction]
+    also_read: [grammar-point-lesson-design, confusable-discrimination]
+    card: cards/error-forecast.md
+    frontmatter:
+      description: |
+        用户要预测某语法点的典型偏误、或要决定课堂上纠不纠/何时纠时调用。
+        必须先问学生母语；本库偏误不带国别标注，迁移分析须标注为模型补充。
+    source_evidence:
+      - source_id: src-manual-1
+        location: 凡例「常见偏误」定义（第 48–49 行）+ 各单元偏误段
+      - source_id: src-classroom
+        location: 第 24 问（纠错时机，第 741 行）
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.confusable-discrimination
+    revision: 2
+    status: active
+    slug: confusable-discrimination
+    title: 易混点辨析
+    importance: critical
+    importance_rationale: "201 条完整辨析（844 KB，占知识库最大单块），每条含疑问/析疑/考考你三段；「这两个词有什么区别」是教师被问住的第一高频场景。"
+    one_liner: "回答辨析必须三件套：语言事实 → 可判定的区分标准 → 检验题。"
+    intents:
+      - "学生问 A 和 B 有什么区别"
+      - "这两个词/句式我讲不清，帮我理一下"
+      - "为什么不能说某个句子"
+    keywords: [区别, 辨析, 易混, 近义, 语义差别, 以前, 以来, 就, 才, 反而, difference, confusing words]
+    also_read: [error-forecast]
+    card: cards/confusable-discrimination.md
+    frontmatter:
+      description: |
+        用户问两个及以上近义形式（词/句式）的差别，或被学生问住时调用。
+        输出：例句对比 + 可判定标准 + 检验题；只解释单个词义不必调用。
+    source_evidence:
+      - source_id: src-dis1
+        location: 201 例「疑问/析疑/考考你」结构
+      - source_id: src-dis2
+        location: 同上（续）
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.practice-ladder
+    revision: 2
+    status: active
+    slug: practice-ladder
+    title: 操练梯度与课堂活动
+    importance: high
+    importance_rationale: "五段式中「教学建议」与课堂技巧第 26 问（活动四条原则）支撑；缺此卡教案只有讲解没有练，课堂时间填不满是新手教师的首要痛点。"
+    one_liner: "操练按机械→半交际→交际三步走，活动设计守四条原则（互动性/趣味性/实效性/可操作性）。"
+    intents:
+      - "这个语法点怎么操练 / 帮我设计练习"
+      - "帮我设计课堂活动 / 活动怎么搞才有意思"
+      - "讲完还剩 20 分钟做什么"
+    keywords: [操练, 练习, 活动, 游戏, 互动, 机械练习, 交际性练习, 课堂时间, activity, practice]
+    also_read: [grammar-point-lesson-design, classroom-diagnosis]
+    card: cards/practice-ladder.md
+    frontmatter:
+      description: |
+        用户要设计操练环节或课堂活动时调用。输出按梯度分层的练习序列 + 活动方案与禁忌。
+        讲解设计不属此卡（走五段式备课）。
+    source_evidence:
+      - source_id: src-classroom
+        location: 第 26 问（课堂活动四条原则与禁忌）
+      - source_id: src-manual-1
+        location: 教学建议段（操练梯度）
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.classroom-diagnosis
+    revision: 2
+    status: active
+    slug: classroom-diagnosis
+    title: 课堂问题诊断
+    importance: high
+    importance_rationale: "课堂技巧手册 42 个真实问题的处置方案（192 KB），覆盖不开口、水平参差、纪律、教材、自我反思等新手教师最常求助的现场问题。"
+    one_liner: "课堂问题先分层归因（动机/难度/关系/组织），再取对应处置方案；不要一上来就归因于学生态度。"
+    intents:
+      - "学生不开口 / 不配合 / 课堂气氛差"
+      - "班里水平参差怎么办 / 纪律怎么管"
+      - "怎么选教材 / 我课上得不好但不知道问题在哪"
+    keywords: [不开口, 沉默, 纪律, 参差, 分层, 教材, 提问, 参与度, 课堂管理, 反思, classroom management]
+    also_read: [intercultural-framing, practice-ladder]
+    card: cards/classroom-diagnosis.md
+    frontmatter:
+      description: |
+        用户描述课堂现场困境（不开口、水平参差、纪律、教材选择、自我诊断）时调用。
+        学生语法出错走偏误卡；文化观念冲突走跨文化卡。
+    source_evidence:
+      - source_id: src-classroom
+        location: 第 7 问（学生沉默）、第 18 问（教学反思）等 42 个问题
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.pinyin-orthography
+    revision: 1
+    status: active
+    slug: pinyin-orthography
+    title: 拼音书写判定（正词法）
+    importance: high
+    importance_rationale: "GB/T 16159—2012 全文可逐条引用（28 KB），是教材/板书/姓名拼写的唯一权威依据；写错是公开错误且会被学生照抄，纠正成本高。"
+    one_liner: "先判是不是一个词，再查条款：词内连写词间分写，专名另按人名/地名条款，标调以国标原调为准。"
+    intents:
+      - "这句/这个词的拼音怎么连写 / 要不要空格"
+      - "人名地名机构名怎么拼 / 要不要大写"
+      - "隔音符号、声调标原调还是变调"
+    keywords: [拼音, 连写, 分写, 大写, 隔音符号, 标调, 正词法, 专名, 移行, 缩写, pinyin, orthography]
+    also_read: [grammar-point-lesson-design, level-scoping]
+    card: cards/pinyin-orthography.md
+    frontmatter:
+      description: |
+        用户问拼音书写形式（连写/分写/大写/标调/隔音符号/移行）或怀疑教材拼音写错时调用。
+        只管书写不管读音；读音、变调、儿化属语音本体，本库不含。
+    source_evidence:
+      - source_id: src-pinyin
+        location: GB/T 16159—2012 第 5.1、6.1、6.2、6.3、6.4、6.5、6.6 条
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.demo-lesson-shuoke
+    revision: 2
+    status: active
+    slug: demo-lesson-shuoke
+    title: 说课与试讲
+    importance: high
+    importance_rationale: "面试指南的说课四要点与试讲脚本是证书考生的刚需（268 KB 原文）；但属应试导向，须与日常备课隔离以免污染常规流程。"
+    one_liner: "说课四要点（对象/目标内容/重难点/步骤）+ 突出设计思路与理论依据，不复述教案。"
+    intents:
+      - "帮我准备说课 / 试讲 / 公开课"
+      - "说课稿怎么写 / 几分钟讲多少"
+      - "评委追问设计意图怎么答"
+    keywords: [说课, 试讲, 公开课, 面试, 证书, 教案展示, 评委, demo lesson, teaching demo]
+    also_read: [level-scoping, grammar-point-lesson-design]
+    card: cards/demo-lesson-shuoke.md
+    frontmatter:
+      description: |
+        用户为面试、公开课、教研展示准备说课稿或试讲脚本时调用。
+        日常备课不走此卡（走五段式备课）。
+    source_evidence:
+      - source_id: src-interview
+        location: 第四节 说课方法与技巧、试讲、中文问答
+
+  - capability_id: cap.hanyu-teacher-lesson-prep.intercultural-framing
+    revision: 2
+    status: active
+    slug: intercultural-framing
+    title: 跨文化框架校准
+    importance: medium
+    importance_rationale: "跨文化教材 357 KB 但成书较早，本卡定位为薄卡：只提供术语与框架（文化休克六表现、价值观维度、非语言交际），具体应对交由模型；不作为答案来源。"
+    one_liner: "用框架（文化休克/价值观/非语言）把现象放对位置，只提出假设，不下结论、不贴国别标签。"
+    intents:
+      - "学生的行为是不是文化差异 / 我是不是被冒犯了"
+      - "怎么给学生解释面子、关系、客气"
+      - "班里因文化差异起冲突 / 留学生情绪低落"
+    keywords: [文化差异, 文化休克, 面子, 关系, 刻板印象, 非语言, 价值观, 跨文化, culture shock, intercultural]
+    also_read: [classroom-diagnosis]
+    card: cards/intercultural-framing.md
+    frontmatter:
+      description: |
+        用户把课堂现象归因于文化、或要解释文化概念、或班里发生文化冲突时调用。
+        输出框架与假设，不输出国别结论；纯教学组织问题走课堂诊断卡。
+    source_evidence:
+      - source_id: src-culture
+        location: 第十二章 文化休克（第 2322 行）等 12 章框架

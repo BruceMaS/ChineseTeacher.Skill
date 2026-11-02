@@ -1,0 +1,20 @@
+  skill: .staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep   71 行    6551 字节
+
+共扫描 13 个 .md，其中 1 个 SKILL.md
+WARN  [name-dir] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\SKILL.md: name `hanyu-teacher-lesson-prep` 与目录名 `.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep` 不一致
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\classroom-diagnosis.md: `../kb/index/classroom.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\confusable-discrimination.md: `../kb/index/discrimination.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\confusable-discrimination.md: `../kb/index/grammar-points.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\demo-lesson-shuoke.md: `../kb/index/interview.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\error-forecast.md: `../kb/index/grammar-points.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\grammar-point-lesson-design.md: `../kb/index/grammar-points.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\grammar-point-lesson-design.md: `../kb/index/grammar-levels.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\intercultural-framing.md: `../kb/index/cross-culture.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\level-scoping.md: `../kb/index/grammar-levels.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\level-scoping.md: `../kb/index/vocab-levels.tsv` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\level-scoping.md: `../kb/index/char-levels.tsv` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\level-scoping.md: `../kb/standards/level-descriptors.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\level-scoping.md: `../kb/standards/quantitative.md` 不存在
+ERROR [broken-ref] D:\个人文档\ChineseTeacher.Skill\dist\.staging-run-20261030-190115-dfffe5-hanyu-teacher-lesson-prep\references\capabilities\practice-ladder.md: `../kb/index/grammar-points.md` 不存在
+
+结果: 14 errors, 1 warnings
