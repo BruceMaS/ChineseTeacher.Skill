@@ -1,12 +1,50 @@
 # 汉语教师备课知识库（hanyu-teacher-lesson-prep）
 
-一个面向**国际中文教师备课**的检索型知识库技能包：把 11 本国际中文教育工具书拆成可检索的索引表与分片，供 AI 在备课时落到具体语料上回答，而不是凭印象生成。
+一个面向**国际中文教师备课**的检索型知识库技能包：把 11 本国际中文教育工具书拆成可检索的索引表与分片，让 AI 备课时落到具体语料上回答，而不是凭印象生成。
 
 - 当前版本：**1.0.3**
 - 作者：Bruce
 - 适用：语法点备课、等级对标与超纲判断、偏误预测、易混词辨析、操练与课堂活动设计、说课与试讲脚本、课堂状况处置、拼音正词法、跨文化框架
 
-## 目录结构
+## 安装
+
+这个仓库有两个分支，装的不是同一个东西：
+
+| 分支 | 内容 | 用途 |
+|---|---|---|
+| `main`（默认） | 语料、构建脚本、能力卡源码、dist 产物 | 看做法、改内容、重新构建 |
+| `skill` | **根目录即技能根**的成品包（`SKILL.md` 在第一层，最深两级） | 拿来直接安装 |
+
+⚠️ 直接把 `main` 克隆进 `~/.workbuddy/skills/` **不会生效**：仓库根没有 `SKILL.md`，且 `books/<项目>/<子目录>/` 是三级结构，超出平台两级限制。
+
+### 方式一：把链接发给 WorkBuddy（最省事）
+
+把下面这段整段发给 WorkBuddy：
+
+```
+请安装这个技能：https://github.com/BruceMaS/ChineseTeacher.Skill
+用 skill 分支，克隆到 ~/.workbuddy/skills/hanyu-teacher-lesson-prep，
+确认根目录有 SKILL.md、且最深只有两级目录，然后告诉我需要新开对话才生效。
+```
+
+### 方式二：下载 zip 上传（不碰命令行）
+
+1. 到 [Releases](https://github.com/BruceMaS/ChineseTeacher.Skill/releases/latest) 下载 `hanyu-teacher-lesson-prep.zip`
+   直链：`https://github.com/BruceMaS/ChineseTeacher.Skill/releases/download/v1.0.3/hanyu-teacher-lesson-prep.zip`
+2. WorkBuddy 左侧「专家 · 技能 · 连接器」→「技能」→ 右上角「添加技能」→「上传技能」→ 拖入 zip
+3. 通过校验后启用，**新开一个对话**才生效
+
+### 方式三：命令行
+
+```bash
+git clone --depth 1 -b skill https://github.com/BruceMaS/ChineseTeacher.Skill.git /tmp/htp \
+  && rm -rf /tmp/htp/.git \
+  && mv /tmp/htp ~/.workbuddy/skills/hanyu-teacher-lesson-prep
+```
+
+必须删掉 `.git`：克隆下来的 `.git/refs/...` 会让技能目录超过两级。Windows 目标路径是 `C:/Users/<用户名>/.workbuddy/skills/`。
+
+## 仓库结构（main 分支）
 
 ```
 工具书Markdown/                     11 本工具书的 OCR 全文（构建输入）
@@ -15,20 +53,10 @@ books/hanyu-teacher-lesson-prep/    工程目录
   scripts/                          build_kb.py / postbuild.py / pack_market.py
   kb/                               构建产出的知识库（索引表 + 分片 + 原文层）
 dist/
-  hanyu-teacher-lesson-prep/        可直接安装的技能包（两级目录）
-  market/hanyu-teacher-lesson-prep.zip  上架用压缩包（≤3 MB 解压体积）
+  hanyu-teacher-lesson-prep/        可直接安装的技能包（即 skill 分支的内容）
+  market/hanyu-teacher-lesson-prep.zip  Release 用的压缩包
 icon.png
 ```
-
-## 安装
-
-把 `dist/hanyu-teacher-lesson-prep/` 整个目录复制到 WorkBuddy 的用户技能目录：
-
-```bash
-cp -r dist/hanyu-teacher-lesson-prep ~/.workbuddy/skills/hanyu-teacher-lesson-prep
-```
-
-Windows 对应 `C:/Users/<用户名>/.workbuddy/skills/`。
 
 ## 从源文件重建
 
@@ -42,7 +70,7 @@ python scripts/pack_market.py --author "Bruce" --version 1.0.3 \
     --desc-zh "本技能由多本国际中文教育工具书蒸馏而成，主要为汉语教师提供备课思路。"
 ```
 
-注意 `postbuild.py` **不会**自动重跑 `build_kb.py`，改了源文件必须先构建知识库再发布。
+`postbuild.py` **不会**自动重跑 `build_kb.py`，改了源文件必须先构建知识库再发布。发布新版本后，`skill` 分支要同步 `dist/hanyu-teacher-lesson-prep/` 的内容。
 
 ## 知识库规模
 
